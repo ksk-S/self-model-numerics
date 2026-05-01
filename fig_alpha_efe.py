@@ -10,6 +10,11 @@ pi_bar(a|y) = sum_mu p(mu) pi(a|mu, y)
 """
 import numpy as np
 import matplotlib.pyplot as plt
+import os
+# Output directory: <repo>/figures/, written next to this script.
+fig_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'figures')
+os.makedirs(fig_dir, exist_ok=True)
+
 
 plt.rcParams.update({
     'font.family':       'sans-serif',
@@ -119,8 +124,8 @@ for s in ('top', 'right'):
     ax[1].spines[s].set_visible(False)
 
 plt.tight_layout()
-out_pdf = 'fig_alpha_efe.pdf'
-out_png = 'fig_alpha_efe.png'
+out_pdf = os.path.join(fig_dir, 'fig_alpha_efe.pdf')
+out_png = os.path.join(fig_dir, 'fig_alpha_efe.png')
 plt.savefig(out_pdf, bbox_inches='tight')
 plt.savefig(out_png, dpi=160, bbox_inches='tight')
 plt.close()

@@ -27,6 +27,11 @@ Quadrant + opacity verification (printed to stdout):
 """
 import numpy as np
 import matplotlib.pyplot as plt
+import os
+# Output directory: <repo>/figures/, written next to this script.
+fig_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'figures')
+os.makedirs(fig_dir, exist_ok=True)
+
 
 plt.rcParams.update({
     'font.family':       'sans-serif',
@@ -306,8 +311,8 @@ def main():
     ax.grid(alpha=0.3, axis='y')
 
     plt.tight_layout()
-    plt.savefig('fig_ca_wd.pdf', bbox_inches='tight')
-    plt.savefig('fig_ca_wd.png', bbox_inches='tight', dpi=180)
+    plt.savefig(os.path.join(fig_dir, 'fig_ca_wd.pdf'), bbox_inches='tight')
+    plt.savefig(os.path.join(fig_dir, 'fig_ca_wd.png'), bbox_inches='tight', dpi=180)
     print("\nSaved fig_ca_wd.pdf and fig_ca_wd.png")
 
 # ---------------------------------------------------------------------------

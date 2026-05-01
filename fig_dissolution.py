@@ -16,6 +16,11 @@ Plots:
 """
 import numpy as np
 import matplotlib.pyplot as plt
+import os
+# Output directory: <repo>/figures/, written next to this script.
+fig_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'figures')
+os.makedirs(fig_dir, exist_ok=True)
+
 
 plt.rcParams.update({
     'font.family':       'sans-serif',
@@ -143,8 +148,8 @@ for s in ('top', 'right'):
     axes[2].spines[s].set_visible(False)
 
 plt.tight_layout()
-plt.savefig('fig_dissolution.pdf', bbox_inches='tight')
-plt.savefig('fig_dissolution.png', dpi=160, bbox_inches='tight')
+plt.savefig(os.path.join(fig_dir, 'fig_dissolution.pdf'), bbox_inches='tight')
+plt.savefig(os.path.join(fig_dir, 'fig_dissolution.png'), dpi=160, bbox_inches='tight')
 plt.close()
 print(f'alpha range: [{alpha_grid.min():.4f}, {alpha_grid.max():.4f}]')
 print(f'I(M;Y) range: [{world_info_arr.min():.4f}, {world_info_arr.max():.4f}]')

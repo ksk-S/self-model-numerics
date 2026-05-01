@@ -8,6 +8,11 @@ experience hierarchy (sec:memoryless-mindfulness).
 """
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
+import os
+# Output directory: <repo>/figures/, written next to this script.
+fig_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'figures')
+os.makedirs(fig_dir, exist_ok=True)
+
 
 # Cleaner sans-serif font (Helvetica/Arial-style); matplotlib will fall
 # back if Helvetica is unavailable. Use mathtext for math symbols.
@@ -99,7 +104,7 @@ ax.set_yticklabels(['0', '1', '', '', 'high'])
 ax.grid(alpha=0.12)
 
 plt.tight_layout()
-plt.savefig('fig_hierarchy.pdf', bbox_inches='tight')
-plt.savefig('fig_hierarchy.png', dpi=160, bbox_inches='tight')
+plt.savefig(os.path.join(fig_dir, 'fig_hierarchy.pdf'), bbox_inches='tight')
+plt.savefig(os.path.join(fig_dir, 'fig_hierarchy.png'), dpi=160, bbox_inches='tight')
 plt.close()
 print('Figure C saved.')
